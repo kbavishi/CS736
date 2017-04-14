@@ -1,0 +1,41 @@
+name: minebench
+version: 0.1
+summary: Snap for running MineBench
+description: A Snap for using MineBench to measure performance
+confinement: strict
+
+apps:
+  KMeans:
+    command: wrapper __KMEANS__
+  HOP:
+    command: wrapper __HOP__
+  PLSA:
+    command: wrapper __PLSA__
+  ScalParC:
+    command: wrapper __ScalParC__
+  SEMPHY:
+    command: wrapper __SEMPHY__
+  SVMRFE:
+    command: wrapper __SVM_RFE__
+  ParETI:
+    command: wrapper __ParETI__
+  RSEARCH:
+    command: wrapper __RSEARCH__
+  BIRCH:
+    command: wrapper __BIRCH__
+  Apriori:
+    command: wrapper __APRIORI__
+  ECLAT:
+    command: wrapper __ECLAT__
+  Bayesian:
+    command: wrapper __BAYESIAN__
+
+parts:
+  make-project:
+    plugin: make
+    source: https://github.com/kbavishi/MineBench.git
+    source-type: git
+    artifacts: [ '' ]
+    stage-packages: [mpich, libhwloc5, libopenmpi-dev, openmpi-bin, dpkg]
+    organize:
+       ../../../wrapper: bin/
