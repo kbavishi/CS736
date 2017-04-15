@@ -29,7 +29,7 @@ pc.defineParameter("osNodeType", "Hardware type of node",
 params = pc.bindParameters()
 
 # Create the RawPC nodes.
-node = request.RawPC("node%d" % i)
+node = request.RawPC("node0")
 if params.osNodeType:
 	node.hardware_type = params.osNodeType
 
