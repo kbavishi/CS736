@@ -108,10 +108,11 @@ TODO
 4. Calculate isolation metric: ```IM = abs(avg(T1-interference) - avg(T2-interference)) / avg(T-standalone)```. The lower this metric, the better the isolation provided.
 
 ### Testing tools and notes
-1. We will use ```perf stat``` to measure the completion time of a test.
-2. We will use ```taskset``` to pin the test process to particular cores.
-3. Drop VM caches after every test run. ```sync; echo 3 | sudo tee /proc/sys/vm/drop_caches```
-4. Disable hyperthreading by disabling cores 16-31: ```echo 0 | sudo /sys/devices/system/cpu/cpu16/online```
+1. Perform 5 runs of each workload type and use the average completion time for the metric calculation.
+2. We will use ```perf stat``` to measure the completion time of a test.
+3. We will use ```taskset``` to pin the test process to particular cores.
+4. Drop VM caches after every test run. ```sync; echo 3 | sudo tee /proc/sys/vm/drop_caches```
+5. Disable hyperthreading by disabling cores 16-31: ```echo 0 | sudo tee /sys/devices/system/cpu/cpu16/online```. Replace with the appropriate CPU num in the previous command.
 
 ### Variation #1: Number of cores
 
