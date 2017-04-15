@@ -28,6 +28,9 @@ The link to the download page is [here](http://cucis.ece.northwestern.edu/projec
 We run 6 different kinds of workloads structured along 2 dimensions: type of test (ie. serial or parallel), and size of dataset (small, medium or large). 
 
 The tests along with their arguments and dataset names are stated below for each workload.
+* Serial Tests: ECLAT, BIRCH
+* Parallel Tests: Fuzzy KMeans, KMeans, Apriori, ScalParC, HOP
+
 
 ### S1: Serial tests, small datasets
 
@@ -59,8 +62,8 @@ NOTE - We need to preprocess the dataset for ECLAT before it can be used. Please
 ### P1: Parallel tests, small datasets
 
 ```
-KMeans/example -i datasets/kmeans/edge100 -b -o -f -p <num_threads>
-KMeans/example -i datasets/kmeans/edge100 -b -o -p <num_threads>
+KMeans/example -i datasets/kmeans/edge100 -o -f -p <num_threads>
+KMeans/example -i datasets/kmeans/edge100 -o -p <num_threads>
 Apriori/omp_apriori -i datasets/APR/data.ntrans_400.tlen_10.nitems_1.npats_2000.patlen_6 -f datasets/APR/offset_file_400_10_1_P1.txt -n <num_threads> -s 0.0075
 ScalParC/scalparc datasets/ScalParC/para_F26-A32-D125K/F26-A32-D125K.tab 125000 32 2 <num_threads>
 HOP/para_hop 61440 datasets/HOP/particles_0_64 64 16 -1 <num_threads>
