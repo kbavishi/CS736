@@ -23,7 +23,7 @@ We use CloudLab for our experiments. The exact settings of the DUT are given bel
 
 The link to the download page is [here](http://cucis.ece.northwestern.edu/projects/DMS/MineBenchDownload.html)
 
-## MineBench tests
+## MineBench tests (CPU isolation)
 
 We run 6 different kinds of workloads structured along 2 dimensions: type of test (ie. serial or parallel), and size of dataset (small, medium or large). 
 
@@ -89,6 +89,14 @@ HOP/para_hop 61440 datasets/HOP/particles_0_256 64 16 -1 <num_threads>
 ```
 
 NOTE - We need to preprocess the dataset for Apriori before it can be used. Please see the [Issues section](#issues) for more details.
+
+## Memory Isolation
+
+TODO
+
+## Disk Isolation
+
+TODO
 
 ## Experiment methodology
 
