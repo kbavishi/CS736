@@ -18,6 +18,7 @@ PCAP_FILE = "output.pcap"
 
 snap_args = {
     '__KMEANS__': 'minebench.KMeans',
+    '__FUZZY_KMEANS__': 'minebench.FuzzyKMeans',
     '__HOP__': 'minebench.HOP',
     '__PLSA__': 'minebench.PLSA',
     '__ScalParC__': 'minebench.ScalParC',
@@ -261,6 +262,15 @@ def generate_test_args(test_name, **kwargs):
         threads = kwargs["num_threads"]
         snap_script_args = "%s -i %s -b -o -p %s" % (exec_name, dataset, threads)
         key = "__KMEANS__"
+
+    elif test_name == "FuzzyKMeans":
+        assert "dataset" in kwargs
+        assert "num_threads" in kwargs
+        exec_name = "$SNAP\/KMeans\/example"
+        dataset = "$SNAP\/datasets\/kmeans\/%s" % kwargs["dataset"]
+        threads = kwargs["num_threads"]
+        snap_script_args = "%s -i %s -b -o -f -p %s" % (exec_name, dataset, threads)
+        key = "__FUZZY_KMEANS__"
 
     elif test_name == "HOP":
         exec_name = "$SNAP\/HOP\/para_hop"
