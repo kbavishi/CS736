@@ -105,16 +105,21 @@ TODO
 
 ### Measuring performance isolation
 
-1. Measure standalone completion time: Measure the completion time for each test when it is run alone without any interference. Let's denote this by ```T-standalone```.
-2. Measure completion time during interference: Run two instances of the same test in parallel, and record the completion times of both processes. Let's denote them by ```T1-interference``` and ```T2-interference```.
+We measure the performance isolation using two metrics:
+* Fairness metric - Indicates how fairly are resources distributed between competing instances.
+* Cohabitation metric - Indicates whether instances happen to be mutually destructive.
+
+The fairness metric is based on [Jain's fairness metric](https://en.wikipedia.org/wiki/Fairness_measure), and is calculated in the following manner:
+1. Run a standalone instance of a test and record its completion time. Let's denote this by ```T-standalone```
+2. Run two instances of the same test in parallel, and record the completion times of both processes. Let's denote them by ```T1-int``` and ```T2-int```.
 3. Repeat steps 1 and 2 to get 5 runs.
-4. Calculate isolation metric: ```IM = abs(avg(T1-interference) - avg(T2-interference)) / avg(T-standalone)```. The lower this metric, the better the isolation provided.
+4. Fairness metric F is calculated using the following formula: ```F = (avg(T1-int) + avg(T2-int))^2 / 2*(avg(T1-int)^2 + avg(T2-int)^2)```. The worst case value of F is 0.5, and the best case value is closer to 1.
+5. Cohab metric C is calculated by: ```C = (avg(T1-int) + avg(T2-int)) / 2*avg(T-standalone)```. Ideally, we expect the 2 parallel instances testcase to take no more than twice the amount of time for the standalone testcase. Therefore, a value of C > 2.0 indicates mutually detrimental processes.
 
 ### Testing tools and notes
 1. Perform 5 runs of each workload type and use the average completion time for the metric calculation.
 2. We will use ```perf stat``` to measure the completion time of a test.
 3. We will use ```taskset``` to pin the test process to particular cores.
-4. Drop VM caches after every test run. ```sync; echo 3 | sudo tee /proc/sys/vm/drop_caches```
 5. Disable hyperthreading by disabling cores 16-31: ```echo 0 | sudo tee /sys/devices/system/cpu/cpu16/online```. Replace with the appropriate CPU num in the previous command.
 
 ### Variation #1: Number of cores
