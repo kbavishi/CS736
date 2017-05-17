@@ -5,16 +5,28 @@ description: A Snap for using MineBench to measure performance
 confinement: strict
 
 apps:
-  KMeans:
-    command: wrapper __KMEANS__
-  FuzzyKMeans:
-    command: wrapper __FUZZY_KMEANS__
-  HOP:
-    command: wrapper __HOP__
+  KMeansSmall:
+    command: wrapper __KMEANS__small
+  KMeansMedium:
+    command: wrapper __KMEANS__medium
+  FuzzyKMeansSmall:
+    command: wrapper __FUZZY_KMEANS__small
+  FuzzyKMeansMedium:
+    command: wrapper __FUZZY_KMEANS__medium
+  HOPSmall:
+    command: wrapper __HOP__small
+  HOPMedium:
+    command: wrapper __HOP__medium
+  HOPLarge:
+    command: wrapper __HOP__large
   PLSA:
     command: wrapper __PLSA__
-  ScalParC:
-    command: wrapper __ScalParC__
+  ScalParCSmall:
+    command: wrapper __ScalParC__small
+  ScalParCMedium:
+    command: wrapper __ScalParC__medium
+  ScalParCLarge:
+    command: wrapper __ScalParC__large
   SEMPHY:
     command: wrapper __SEMPHY__
   SVMRFE:
@@ -23,14 +35,34 @@ apps:
     command: wrapper __ParETI__
   RSEARCH:
     command: wrapper __RSEARCH__
-  BIRCH:
-    command: wrapper __BIRCH__
-  Apriori:
-    command: wrapper __APRIORI__
-  ECLAT:
-    command: wrapper __ECLAT__
+  BIRCHSmall:
+    command: wrapper __BIRCH__small
+  BIRCHMedium:
+    command: wrapper __BIRCH__medium
+  BIRCHLarge:
+    command: wrapper __BIRCH__large
+  AprioriSmall:
+    command: wrapper __APRIORI__small
+  AprioriMedium:
+    command: wrapper __APRIORI__medium
+  AprioriLarge:
+    command: wrapper __APRIORI__large
+  ECLATSmall:
+    command: wrapper __ECLAT__small
+  ECLATMedium:
+    command: wrapper __ECLAT__medium
+  ECLATLarge:
+    command: wrapper __ECLAT__large
   Bayesian:
     command: wrapper __BAYESIAN__
+  SysbenchMem:
+    command: wrapper __SYSBENCH_MEM__
+  SysbenchDisk:
+    command: wrapper __SYSBENCH_DISK__
+  SysbenchDiskPrep:
+    command: wrapper __SYSBENCH_DISK_PREP__
+  SysbenchDiskCleanup:
+    command: wrapper __SYSBENCH_DISK_CLEANUP__
 
 parts:
   make-project:
@@ -38,6 +70,7 @@ parts:
     source: https://github.com/kbavishi/MineBench.git
     source-type: git
     artifacts: [ '' ]
-    stage-packages: [mpich, libhwloc5, libopenmpi-dev, openmpi-bin, dpkg]
+    stage-packages: [mpich, libhwloc5, libopenmpi-dev, openmpi-bin, dpkg,
+                     sysbench, libmysqlclient20]
     organize:
        ../../../wrapper: bin/

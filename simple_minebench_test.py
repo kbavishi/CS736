@@ -1,5 +1,6 @@
 #! /usr/bin/python
 
+import pylint
 import sys
 import snap_testlib
 
@@ -20,121 +21,94 @@ TEST_ARGS = [
     #("ParETI", {"dataset": "data1", "num_cpu": 4}),
 ]
 
-def get_test_args(test_type, num_threads):
-    if test_type == "small":
-        tests = list(snap_testlib.PARALLEL_S_TEST_ARGS)
-    elif test_type == "medium":
-        tests = list(snap_testlib.PARALLEL_M_TEST_ARGS)
-    elif test_type == "large":
-        tests = list(snap_testlib.PARALLEL_L_TEST_ARGS)
-    else:
-        assert False, "Unsupported test type %s" % test_type
-
-    for test_name, test_args in tests:
-        test_args["num_threads"] = num_threads
-    return tests
-
-def run_parallel_tests(shell, test_type, num_threads, num_cpu, iterations=2):
-    cpu_list = range(0, num_cpu)
-
-    # Generate the test arguments
-    snap_test_args = get_test_args(test_type, num_threads=num_threads)
-    tests = snap_testlib.build_test_args(snap_test_args)
-    
-    # Rebuild minebench snap with updated test arguments
-    snap_testlib.build_minebench_snap(shell, tests, snap_test_args)
-
+def run_tests(shell, test_dict, cpu_list, outfile_name, iterations=5):
     # Persist our results in a known location
-    outfile = open("output/parallel_%s_P%d_T%d.log" % (test_type, num_cpu,
-                                                       num_threads), "w")
+    outfile = open(outfile_name, "w")
 
     # Time to run the tests now
-    for test_name, test_args in tests.items():
+    for test_name, test_args in test_dict.items():
         # First perform non-interference tests
         for _ in xrange(iterations):
-            output = snap_testlib.run_snap(shell, test_name, test_args,
+            output = snap_testlib.run_snap(shell, test_name,
                                            cpu=cpu_list, interference=False)
             outfile.write("%s" % output)
             outfile.flush()
 
         # Then perform interference tests
         for _ in xrange(iterations):
-            output = snap_testlib.run_snap(shell, test_name, test_args,
+            output = snap_testlib.run_snap(shell, test_name,
                                            cpu=cpu_list, interference=True)
             outfile.write("%s" % output)
             outfile.flush()
 
     outfile.close()
 
-def run_serial_tests(shell, test_type, num_cpu, iterations=2):
+def run_parallel_tests(shell, test_type, num_threads, num_cpu):
     cpu_list = range(0, num_cpu)
 
     # Generate the test arguments
-    if test_type == "small":
-        snap_test_args = list(snap_testlib.SERIAL_S_TEST_ARGS)
-    elif test_type == "medium":
-        snap_test_args = list(snap_testlib.SERIAL_M_TEST_ARGS)
-    elif test_type == "large":
-        snap_test_args = list(snap_testlib.SERIAL_L_TEST_ARGS)
-    else:
-        assert False, "Unsupported test type %s" % test_type
-
-    tests = snap_testlib.build_test_args(snap_test_args)
+    test_spec = snap_testlib.get_test_spec("parallel", test_type,
+                                           num_threads=num_threads)
+    tests = snap_testlib.build_test_dict(test_spec, test_type=test_type)
     
-    # Rebuild minebench snap with updated test arguments
-    snap_testlib.build_minebench_snap(shell, tests, snap_test_args)
+    outfile_name = "output/parallel_%s_P%d_T%d.log" % (test_type, num_cpu,
+                                                       num_threads)
+    run_tests(shell, tests, cpu_list, outfile_name)
 
-    # Persist our results in a known location
-    outfile = open("output/serial_%s_P%d.log" % (test_type, num_cpu), "w")
+def run_serial_tests(shell, test_type, num_cpu):
+    cpu_list = range(0, num_cpu)
+
+    # Generate the test arguments
+    test_spec = snap_testlib.get_test_spec("serial", test_type)
+    tests = snap_testlib.build_test_dict(test_spec, test_type=test_type)
+    
+    outfile_name = "output/serial_%s_P%d.log" % (test_type, num_cpu)
 
     # Time to run the tests now
-    for test_name, test_args in tests.items():
-        # First perform non-interference tests
-        for _ in xrange(iterations):
-            output = snap_testlib.run_snap(shell, test_name, test_args,
-                                           cpu=cpu_list, interference=False)
-            outfile.write("%s" % output)
-            outfile.flush()
+    run_tests(shell, tests, cpu_list, outfile_name)
 
-        # Then perform interference tests
-        for _ in xrange(iterations):
-            output = snap_testlib.run_snap(shell, test_name, test_args,
-                                           cpu=cpu_list, interference=True)
-            outfile.write("%s" % output)
-            outfile.flush()
+def run_sysbench_tests(shell, num_cpu):
+    cpu_list = range(0, num_cpu)
 
-    outfile.close()
+    # Generate the test arguments
+    test_spec = snap_testlib.SYSBENCH_TEST_SPEC
+    for (test_name, args) in test_spec:
+        args["num_threads"] = num_cpu
+    tests = snap_testlib.build_test_dict(test_spec)
+
+    outfile_name = "output/sysbench_P%d.log" % (num_cpu)
+
+    # Time to run the tests now
+    run_tests(shell, tests, cpu_list, outfile_name)
 
 def minebench_snap_test(host_str):
     shell = snap_testlib.setup_shell(host_str)
 
-    # Run the serial tests
-    for num_cpu in [1, 4, 8]:
-        run_serial_tests(shell, test_type="small", num_cpu=num_cpu)
-        run_serial_tests(shell, test_type="medium", num_cpu=num_cpu)
-        run_serial_tests(shell, test_type="large", num_cpu=num_cpu)
+    # First, run them as single-threaded applications.
+    # Then, run them as actual multithreaded applications
+    #num_threads_list = [1, 8]
+    num_threads_list = [8]
+    for num_threads in num_threads_list:
+        # Build our snap with the necessary tests
+        snap_testlib.build_minebench_snap(shell, num_threads)
         import pdb; pdb.set_trace()
 
-    import pdb; pdb.set_trace()
+        #for num_cpu in [1, 4, 8]:
+        for num_cpu in [4]:
+            # Run the serial tests.
+            if num_threads == 1:
+                # But only run them once
+                run_serial_tests(shell, test_type="small", num_cpu=num_cpu)
+                run_serial_tests(shell, test_type="medium", num_cpu=num_cpu)
+                run_serial_tests(shell, test_type="large", num_cpu=num_cpu)
 
-    # Run the multithreaded tests
-    # First, run them as single-threaded applications with multiple CPUs
-    for num_cpu in [1, 4, 8]:
-        run_parallel_tests(shell, test_type="small", num_cpu=num_cpu,
-                           num_threads=1)
-        run_parallel_tests(shell, test_type="medium", num_cpu=num_cpu,
-                           num_threads=1)
-        run_parallel_tests(shell, test_type="large", num_cpu=num_cpu,
-                           num_threads=1)
-
-    # Now, run them as actual multithreaded applications
-    for num_cpu in [1, 4, 8]:
-        run_parallel_tests(shell, test_type="small", num_cpu=num_cpu,
-                           num_threads=num_cpu)
-        run_parallel_tests(shell, test_type="medium", num_cpu=num_cpu,
-                           num_threads=num_cpu)
-        run_parallel_tests(shell, test_type="large", num_cpu=num_cpu,
-                           num_threads=num_cpu)
+            # Run the parallel tests.
+            #run_parallel_tests(shell, test_type="small", num_cpu=num_cpu,
+            #                   num_threads=num_threads)
+            run_parallel_tests(shell, test_type="medium", num_cpu=num_cpu,
+                               num_threads=num_threads)
+            #run_parallel_tests(shell, test_type="large", num_cpu=num_cpu,
+            #                   num_threads=num_threads)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

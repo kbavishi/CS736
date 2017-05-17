@@ -1,0 +1,19 @@
+Introduction - In this section, we talk about how Snappy provides security isolation by restricting access to (and information about) logical objects such as files, virtual memory addresses, port numbers, user IDs and so on. We will talk about security isolation from the perspective of two usage scenarios -- (1) a multi-tenant system with multiple users who need to isolate their processes from each other; (2) a single-user system where a user is trying to run an untrusted application.
+
+Filesystem security isolation - Each snap can only access its own data. It can’t access other applications’ data, non-application specific data and privileged portions of the OS. Snappy uses an AppArmor profile for each snap to mediate access to library loading and filesystem data. The AppArmor profile is automatically generated based on the YAML file provided by the snap, and thus avoids the complexity of manually creating the AppArmor profile. Snappy also creates a mount namespace to implement a per-snap /tmp directory.
+
+Network security isolation - By default, snaps do not run with CAP_NET_ADMIN, are not allowed to manipulate network interfaces, routing, firewall, QoS, network namespaces etc. and are are not allowed to monitor the network. These privileges can only be achieved by specifying special "interfaces" in the YAML file such as network, network-bind, network-control or network-observe interfaces. Specifying any of these interfaces triggers a manual review process in the Ubuntu store ensuring that malicious applications do not make it to end users. Snappy also does not create new network namespaces unlike Docker containers. The idea is to use the default global namespace for co-operation, and allow access only through YAML interfaces. Fine-grained network mediation, such as allowing snaps to bind to only certain ports or interfaces, is also not supported in the current Snappy version, but there are discussions about bringing it in later versions.
+
+Kernel interaction / System calls - Snappy allows seccomp profiles to be attached to snaps limiting the system calls that are allowed to be run. This can be quite useful for Scenario (1) where users are trying to create and run secure programs. It can also be useful for Scenario (2), but it is not clear if it is possible to explicitly define system call filters for an already defined application YAML. A malicious application will most likely not setup any system call filters, and thus if a user can not override those filters, the seccomp mechanism proves to be quite useless.
+
+PIDs and user IDs - Snappy does not create PID namespaces unlike Docker containers. This does mean 
+
+Sockets, signals, process tracing, procfs
+
+
+TODO:
+1. Add section about X11 confinement issues.
+2. Add section about snap not supporting drop privileges or container users
+3. Maybe talk about not trusting interfaces which use privileged access
+4. Find out how to attach seccomp profiles to containers
+5. How the fuck was I able to kill an outside process from inside?

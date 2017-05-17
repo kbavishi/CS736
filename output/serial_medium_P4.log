@@ -1,168 +1,620 @@
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLAT':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-        945.548828      task-clock (msec)         #    0.604 CPUs utilized          
-             1,874      context-switches          #    0.002 M/sec                  
-                44      cpu-migrations            #    0.047 K/sec                  
-             4,554      page-faults               #    0.005 M/sec                  
-     1,777,708,918      cycles                    #    1.880 GHz                      (50.91%)
+         42.812428      task-clock (msec)         #    1.024 CPUs utilized          
+               189      context-switches          #    0.004 M/sec                  
+                32      cpu-migrations            #    0.747 K/sec                  
+             4,290      page-faults               #    0.100 M/sec                  
+        46,718,896      cycles                    #    1.091 GHz                      (45.91%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-     2,652,652,005      instructions              #    1.49  insns per cycle          (62.50%)
-       330,134,686      branches                  #  349.146 M/sec                    (63.06%)
-        35,561,909      branch-misses             #   10.77% of all branches          (63.54%)
-       540,014,130      L1-dcache-loads           #  571.112 M/sec                    (57.73%)
-         3,794,856      L1-dcache-load-misses     #    0.70% of all L1-dcache hits    (24.19%)
-           699,974      LLC-loads                 #    0.740 M/sec                    (25.39%)
-            92,000      LLC-load-misses           #   13.14% of all LL-cache hits     (38.54%)
+        56,780,168      instructions              #    1.22  insns per cycle          (61.21%)
+         9,671,669      branches                  #  225.908 M/sec                    (62.36%)
+           200,511      branch-misses             #    2.07% of all branches          (71.89%)
+        14,995,265      L1-dcache-loads           #  350.255 M/sec                    (43.98%)
+           837,564      L1-dcache-load-misses     #    5.59% of all L1-dcache hits    (24.58%)
+           169,699      LLC-loads                 #    3.964 M/sec                    (26.62%)
+            63,196      LLC-load-misses           #   37.24% of all LL-cache hits     (36.99%)
 
-       1.566533703 seconds time elapsed
+       0.041797861 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLAT':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-        890.775099      task-clock (msec)         #    0.655 CPUs utilized          
-             1,670      context-switches          #    0.002 M/sec                  
-                95      cpu-migrations            #    0.107 K/sec                  
-             4,457      page-faults               #    0.005 M/sec                  
-     1,733,780,450      cycles                    #    1.946 GHz                      (50.37%)
+         42.634979      task-clock (msec)         #    1.009 CPUs utilized          
+               187      context-switches          #    0.004 M/sec                  
+                32      cpu-migrations            #    0.751 K/sec                  
+             4,289      page-faults               #    0.101 M/sec                  
+        43,912,594      cycles                    #    1.030 GHz                      (56.19%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-     2,589,229,925      instructions              #    1.49  insns per cycle          (63.48%)
-       324,203,232      branches                  #  363.956 M/sec                    (62.48%)
-        35,461,880      branch-misses             #   10.94% of all branches          (62.66%)
-       537,128,298      L1-dcache-loads           #  602.990 M/sec                    (56.45%)
-         4,238,022      L1-dcache-load-misses     #    0.79% of all L1-dcache hits    (24.99%)
-           731,394      LLC-loads                 #    0.821 M/sec                    (26.20%)
-            74,573      LLC-load-misses           #   10.20% of all LL-cache hits     (38.17%)
+        52,286,229      instructions              #    1.19  insns per cycle          (70.68%)
+        11,038,261      branches                  #  258.902 M/sec                    (70.32%)
+           220,753      branch-misses             #    2.00% of all branches          (71.86%)
+        13,761,171      L1-dcache-loads           #  322.767 M/sec                    (39.59%)
+         1,057,726      L1-dcache-load-misses     #    7.69% of all L1-dcache hits    (23.54%)
+           101,563      LLC-loads                 #    2.382 M/sec                    (33.39%)
+            28,765      LLC-load-misses           #   28.32% of all LL-cache hits     (41.60%)
 
-       1.359960405 seconds time elapsed
+       0.042236138 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLAT':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-        553.605266      task-clock (msec)         #    0.416 CPUs utilized          
-             1,295      context-switches          #    0.002 M/sec                  
-                55      cpu-migrations            #    0.099 K/sec                  
-             4,389      page-faults               #    0.008 M/sec                  
-       911,651,942      cycles                    #    1.647 GHz                      (51.40%)
+         43.992447      task-clock (msec)         #    1.036 CPUs utilized          
+               188      context-switches          #    0.004 M/sec                  
+                34      cpu-migrations            #    0.773 K/sec                  
+             4,278      page-faults               #    0.097 M/sec                  
+        52,351,247      cycles                    #    1.190 GHz                      (62.81%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-     1,361,033,589      instructions              #    1.49  insns per cycle          (63.78%)
-       175,992,450      branches                  #  317.902 M/sec                    (63.45%)
-        19,331,368      branch-misses             #   10.98% of all branches          (65.81%)
-       288,885,904      L1-dcache-loads           #  521.827 M/sec                    (58.22%)
-         2,728,894      L1-dcache-load-misses     #    0.94% of all L1-dcache hits    (22.79%)
-           254,891      LLC-loads                 #    0.460 M/sec                    (25.24%)
-            18,368      LLC-load-misses           #    7.21% of all LL-cache hits     (37.35%)
+        55,147,887      instructions              #    1.05  insns per cycle          (73.42%)
+        11,144,795      branches                  #  253.334 M/sec                    (69.48%)
+           223,246      branch-misses             #    2.00% of all branches          (72.28%)
+        14,106,511      L1-dcache-loads           #  320.658 M/sec                    (33.12%)
+         1,077,698      L1-dcache-load-misses     #    7.64% of all L1-dcache hits    (26.69%)
+            97,207      LLC-loads                 #    2.210 M/sec                    (35.32%)
+            29,047      LLC-load-misses           #   29.88% of all LL-cache hits     (43.00%)
 
-       1.330546112 seconds time elapsed
+       0.042452653 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLAT':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-        593.292267      task-clock (msec)         #    0.453 CPUs utilized          
-             1,203      context-switches          #    0.002 M/sec                  
-                55      cpu-migrations            #    0.093 K/sec                  
-             4,427      page-faults               #    0.007 M/sec                  
-     1,030,997,484      cycles                    #    1.738 GHz                      (52.46%)
+         42.285430      task-clock (msec)         #    1.009 CPUs utilized          
+               189      context-switches          #    0.004 M/sec                  
+                32      cpu-migrations            #    0.757 K/sec                  
+             4,286      page-faults               #    0.101 M/sec                  
+        40,465,414      cycles                    #    0.957 GHz                      (52.49%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-     1,540,041,904      instructions              #    1.49  insns per cycle          (63.56%)
-       195,679,867      branches                  #  329.820 M/sec                    (61.71%)
-        21,023,325      branch-misses             #   10.74% of all branches          (60.36%)
-       319,466,909      L1-dcache-loads           #  538.465 M/sec                    (56.75%)
-         3,232,940      L1-dcache-load-misses     #    1.01% of all L1-dcache hits    (27.06%)
-           585,538      LLC-loads                 #    0.987 M/sec                    (28.00%)
-            46,761      LLC-load-misses           #    7.99% of all LL-cache hits     (39.71%)
+        50,495,826      instructions              #    1.25  insns per cycle          (68.61%)
+        10,929,432      branches                  #  258.468 M/sec                    (69.38%)
+           229,924      branch-misses             #    2.10% of all branches          (71.86%)
+        15,426,357      L1-dcache-loads           #  364.815 M/sec                    (43.90%)
+         1,399,437      L1-dcache-load-misses     #    9.07% of all L1-dcache hits    (22.20%)
+           177,671      LLC-loads                 #    4.202 M/sec                    (36.39%)
+            54,455      LLC-load-misses           #   30.65% of all LL-cache hits     (44.84%)
 
-       1.308618177 seconds time elapsed
+       0.041924781 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCH':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-       3991.109668      task-clock (msec)         #    0.884 CPUs utilized          
-             2,766      context-switches          #    0.693 K/sec                  
-                34      cpu-migrations            #    0.009 K/sec                  
-             6,215      page-faults               #    0.002 M/sec                  
-    10,863,552,213      cycles                    #    2.722 GHz                      (50.12%)
+         41.158825      task-clock (msec)         #    1.012 CPUs utilized          
+               192      context-switches          #    0.005 M/sec                  
+                36      cpu-migrations            #    0.875 K/sec                  
+             4,299      page-faults               #    0.104 M/sec                  
+        45,985,077      cycles                    #    1.117 GHz                      (56.51%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-    19,221,058,648      instructions              #    1.77  insns per cycle          (62.45%)
-     3,624,828,048      branches                  #  908.226 M/sec                    (62.23%)
-        77,095,805      branch-misses             #    2.13% of all branches          (62.58%)
-     5,224,788,224      L1-dcache-loads           # 1309.107 M/sec                    (61.92%)
-        59,236,178      L1-dcache-load-misses     #    1.13% of all L1-dcache hits    (25.28%)
-         4,247,323      LLC-loads                 #    1.064 M/sec                    (25.00%)
-           156,145      LLC-load-misses           #    3.68% of all LL-cache hits     (37.29%)
+        54,865,610      instructions              #    1.19  insns per cycle          (70.93%)
+        10,718,306      branches                  #  260.413 M/sec                    (69.16%)
+           218,690      branch-misses             #    2.04% of all branches          (70.68%)
+        14,369,991      L1-dcache-loads           #  349.135 M/sec                    (35.92%)
+           992,669      L1-dcache-load-misses     #    6.91% of all L1-dcache hits    (24.33%)
+           142,206      LLC-loads                 #    3.455 M/sec                    (32.95%)
+            49,851      LLC-load-misses           #   35.06% of all LL-cache hits     (41.29%)
 
-       4.515157221 seconds time elapsed
+       0.040677144 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCH':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-       4131.606962      task-clock (msec)         #    0.887 CPUs utilized          
-             2,670      context-switches          #    0.646 K/sec                  
-                36      cpu-migrations            #    0.009 K/sec                  
-             6,240      page-faults               #    0.002 M/sec                  
-    10,880,680,767      cycles                    #    2.634 GHz                      (50.01%)
+         41.703250      task-clock (msec)         #    1.011 CPUs utilized          
+               179      context-switches          #    0.004 M/sec                  
+                34      cpu-migrations            #    0.815 K/sec                  
+             4,268      page-faults               #    0.102 M/sec                  
+        46,334,583      cycles                    #    1.111 GHz                      (55.74%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-    19,283,678,366      instructions              #    1.77  insns per cycle          (62.39%)
-     3,620,935,150      branches                  #  876.399 M/sec                    (62.49%)
-        77,481,443      branch-misses             #    2.14% of all branches          (62.74%)
-     5,221,929,208      L1-dcache-loads           # 1263.898 M/sec                    (62.09%)
-        95,208,768      L1-dcache-load-misses     #    1.82% of all L1-dcache hits    (25.05%)
-         5,348,923      LLC-loads                 #    1.295 M/sec                    (24.87%)
-           124,970      LLC-load-misses           #    2.34% of all LL-cache hits     (37.22%)
+        54,974,994      instructions              #    1.19  insns per cycle          (70.83%)
+        11,145,109      branches                  #  267.248 M/sec                    (69.90%)
+           218,252      branch-misses             #    1.96% of all branches          (71.73%)
+        13,181,573      L1-dcache-loads           #  316.080 M/sec                    (36.06%)
+           809,299      L1-dcache-load-misses     #    6.14% of all L1-dcache hits    (23.89%)
+           126,086      LLC-loads                 #    3.023 M/sec                    (31.02%)
+            47,801      LLC-load-misses           #   37.91% of all LL-cache hits     (39.73%)
 
-       4.657077334 seconds time elapsed
+       0.041234775 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         43.135099      task-clock (msec)         #    1.009 CPUs utilized          
+               190      context-switches          #    0.004 M/sec                  
+                31      cpu-migrations            #    0.719 K/sec                  
+             4,280      page-faults               #    0.099 M/sec                  
+        40,472,617      cycles                    #    0.938 GHz                      (52.44%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        49,405,356      instructions              #    1.22  insns per cycle          (68.65%)
+        10,715,324      branches                  #  248.413 M/sec                    (69.55%)
+           229,650      branch-misses             #    2.14% of all branches          (72.54%)
+        15,621,046      L1-dcache-loads           #  362.142 M/sec                    (40.52%)
+         1,240,552      L1-dcache-load-misses     #    7.94% of all L1-dcache hits    (23.64%)
+           175,368      LLC-loads                 #    4.066 M/sec                    (36.49%)
+            52,787      LLC-load-misses           #   30.10% of all LL-cache hits     (44.96%)
+
+       0.042759790 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCH':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-       3813.116946      task-clock (msec)         #    0.865 CPUs utilized          
-             2,285      context-switches          #    0.599 K/sec                  
-                71      cpu-migrations            #    0.019 K/sec                  
-             6,221      page-faults               #    0.002 M/sec                  
-    10,359,353,906      cycles                    #    2.717 GHz                      (50.04%)
+         42.554886      task-clock (msec)         #    1.006 CPUs utilized          
+               186      context-switches          #    0.004 M/sec                  
+                34      cpu-migrations            #    0.799 K/sec                  
+             4,262      page-faults               #    0.100 M/sec                  
+        50,009,099      cycles                    #    1.175 GHz                      (59.87%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-    18,585,442,998      instructions              #    1.79  insns per cycle          (62.35%)
-     3,529,106,685      branches                  #  925.518 M/sec                    (62.56%)
-        68,149,942      branch-misses             #    1.93% of all branches          (62.66%)
-     5,090,044,640      L1-dcache-loads           # 1334.878 M/sec                    (61.68%)
-        92,923,044      L1-dcache-load-misses     #    1.83% of all L1-dcache hits    (25.19%)
-         5,441,589      LLC-loads                 #    1.427 M/sec                    (25.00%)
-           118,569      LLC-load-misses           #    2.18% of all LL-cache hits     (37.57%)
+        55,533,502      instructions              #    1.11  insns per cycle          (72.46%)
+        11,143,457      branches                  #  261.861 M/sec                    (68.73%)
+           224,883      branch-misses             #    2.02% of all branches          (71.42%)
+        14,056,697      L1-dcache-loads           #  330.319 M/sec                    (32.95%)
+         1,085,267      L1-dcache-load-misses     #    7.72% of all L1-dcache hits    (27.28%)
+            98,599      LLC-loads                 #    2.317 M/sec                    (35.98%)
+            33,907      LLC-load-misses           #   34.39% of all LL-cache hits     (43.91%)
 
-       4.405851239 seconds time elapsed
+       0.042303720 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         43.512029      task-clock (msec)         #    1.007 CPUs utilized          
+               190      context-switches          #    0.004 M/sec                  
+                29      cpu-migrations            #    0.666 K/sec                  
+             4,303      page-faults               #    0.099 M/sec                  
+        51,971,958      cycles                    #    1.194 GHz                      (54.78%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        56,096,657      instructions              #    1.08  insns per cycle          (72.30%)
+        10,107,960      branches                  #  232.303 M/sec                    (63.83%)
+           134,779      branch-misses             #    1.33% of all branches          (67.58%)
+        11,914,523      L1-dcache-loads           #  273.821 M/sec                    (25.56%)
+           462,737      L1-dcache-load-misses     #    3.88% of all L1-dcache hits    (40.51%)
+           285,141      LLC-loads                 #    6.553 M/sec                    (40.04%)
+            74,277      LLC-load-misses           #   26.05% of all LL-cache hits     (46.19%)
+
+       0.043204440 seconds time elapsed
 
 ------------------------------
 
- Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCH':
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
 
-       4258.199048      task-clock (msec)         #    0.849 CPUs utilized          
-             1,991      context-switches          #    0.468 K/sec                  
-                81      cpu-migrations            #    0.019 K/sec                  
-             6,196      page-faults               #    0.001 M/sec                  
-     9,987,595,902      cycles                    #    2.345 GHz                      (50.15%)
+         41.103247      task-clock (msec)         #    1.012 CPUs utilized          
+               184      context-switches          #    0.004 M/sec                  
+                33      cpu-migrations            #    0.803 K/sec                  
+             4,293      page-faults               #    0.104 M/sec                  
+        42,230,090      cycles                    #    1.027 GHz                      (53.29%)
    <not supported>      stalled-cycles-frontend  
    <not supported>      stalled-cycles-backend   
-    18,066,930,930      instructions              #    1.81  insns per cycle          (62.57%)
-     3,464,505,070      branches                  #  813.608 M/sec                    (62.73%)
-        59,649,501      branch-misses             #    1.72% of all branches          (62.51%)
-     4,998,546,017      L1-dcache-loads           # 1173.864 M/sec                    (60.99%)
-        83,281,747      L1-dcache-load-misses     #    1.67% of all L1-dcache hits    (24.84%)
-         5,126,264      LLC-loads                 #    1.204 M/sec                    (25.25%)
-           153,849      LLC-load-misses           #    3.00% of all LL-cache hits     (37.64%)
+        51,655,953      instructions              #    1.22  insns per cycle          (68.67%)
+        11,111,526      branches                  #  270.332 M/sec                    (69.18%)
+           233,712      branch-misses             #    2.10% of all branches          (70.81%)
+        14,570,319      L1-dcache-loads           #  354.481 M/sec                    (43.19%)
+         1,179,442      L1-dcache-load-misses     #    8.09% of all L1-dcache hits    (24.44%)
+           133,931      LLC-loads                 #    3.258 M/sec                    (36.40%)
+            40,796      LLC-load-misses           #   30.46% of all LL-cache hits     (44.85%)
 
-       5.014314669 seconds time elapsed
+       0.040626672 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         44.579706      task-clock (msec)         #    1.011 CPUs utilized          
+               199      context-switches          #    0.004 M/sec                  
+                32      cpu-migrations            #    0.718 K/sec                  
+             4,292      page-faults               #    0.096 M/sec                  
+        52,329,067      cycles                    #    1.174 GHz                      (65.10%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        55,077,081      instructions              #    1.05  insns per cycle          (75.04%)
+        11,002,642      branches                  #  246.808 M/sec                    (66.10%)
+           223,896      branch-misses             #    2.03% of all branches          (58.53%)
+        16,214,139      L1-dcache-loads           #  363.711 M/sec                    (18.27%)
+           701,560      L1-dcache-load-misses     #    4.33% of all L1-dcache hits    (47.15%)
+           227,002      LLC-loads                 #    5.092 M/sec                    (47.77%)
+            61,245      LLC-load-misses           #   26.98% of all LL-cache hits     (55.86%)
+
+       0.044087379 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         43.319625      task-clock (msec)         #    1.026 CPUs utilized          
+               186      context-switches          #    0.004 M/sec                  
+                33      cpu-migrations            #    0.762 K/sec                  
+             4,270      page-faults               #    0.099 M/sec                  
+        42,154,455      cycles                    #    0.973 GHz                      (53.43%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        49,943,915      instructions              #    1.18  insns per cycle          (69.11%)
+        11,082,002      branches                  #  255.819 M/sec                    (69.42%)
+           240,163      branch-misses             #    2.17% of all branches          (70.50%)
+        15,680,068      L1-dcache-loads           #  361.962 M/sec                    (39.15%)
+         1,301,033      L1-dcache-load-misses     #    8.30% of all L1-dcache hits    (24.13%)
+           137,921      LLC-loads                 #    3.184 M/sec                    (38.22%)
+            43,344      LLC-load-misses           #   31.43% of all LL-cache hits     (46.25%)
+
+       0.042229121 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         44.643690      task-clock (msec)         #    1.027 CPUs utilized          
+               188      context-switches          #    0.004 M/sec                  
+                31      cpu-migrations            #    0.694 K/sec                  
+             4,281      page-faults               #    0.096 M/sec                  
+        42,639,277      cycles                    #    0.955 GHz                      (55.45%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        49,680,790      instructions              #    1.17  insns per cycle          (70.48%)
+        11,436,689      branches                  #  256.177 M/sec                    (69.42%)
+           232,699      branch-misses             #    2.03% of all branches          (72.64%)
+        14,772,952      L1-dcache-loads           #  330.908 M/sec                    (42.25%)
+         1,323,321      L1-dcache-load-misses     #    8.96% of all L1-dcache hits    (23.10%)
+           114,298      LLC-loads                 #    2.560 M/sec                    (36.21%)
+            37,615      LLC-load-misses           #   32.91% of all LL-cache hits     (44.08%)
+
+       0.043460734 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         39.539145      task-clock (msec)         #    1.007 CPUs utilized          
+               181      context-switches          #    0.005 M/sec                  
+                36      cpu-migrations            #    0.910 K/sec                  
+             4,277      page-faults               #    0.108 M/sec                  
+        45,015,273      cycles                    #    1.138 GHz                      (54.40%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        54,141,429      instructions              #    1.20  insns per cycle          (69.57%)
+        11,134,489      branches                  #  281.607 M/sec                    (68.46%)
+           229,077      branch-misses             #    2.06% of all branches          (68.69%)
+        13,936,224      L1-dcache-loads           #  352.466 M/sec                    (38.00%)
+           925,857      L1-dcache-load-misses     #    6.64% of all L1-dcache hits    (24.85%)
+            95,830      LLC-loads                 #    2.424 M/sec                    (34.72%)
+            37,283      LLC-load-misses           #   38.91% of all LL-cache hits     (43.34%)
+
+       0.039261400 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.ECLATMedium':
+
+         41.637841      task-clock (msec)         #    1.011 CPUs utilized          
+               186      context-switches          #    0.004 M/sec                  
+                31      cpu-migrations            #    0.745 K/sec                  
+             4,277      page-faults               #    0.103 M/sec                  
+        41,830,962      cycles                    #    1.005 GHz                      (54.52%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+        51,390,467      instructions              #    1.23  insns per cycle          (69.45%)
+        11,023,282      branches                  #  264.742 M/sec                    (69.44%)
+           226,567      branch-misses             #    2.06% of all branches          (71.17%)
+        13,674,217      L1-dcache-loads           #  328.408 M/sec                    (41.88%)
+         1,080,755      L1-dcache-load-misses     #    7.90% of all L1-dcache hits    (24.19%)
+           105,301      LLC-loads                 #    2.529 M/sec                    (35.27%)
+            29,997      LLC-load-misses           #   28.49% of all LL-cache hits     (43.52%)
+
+       0.041180445 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2730.927948      task-clock (msec)         #    1.000 CPUs utilized          
+               187      context-switches          #    0.068 K/sec                  
+                33      cpu-migrations            #    0.012 K/sec                  
+             5,726      page-faults               #    0.002 M/sec                  
+     7,892,760,926      cycles                    #    2.890 GHz                      (50.22%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,581,886,772      instructions              #    1.85  insns per cycle          (62.66%)
+     3,035,800,523      branches                  # 1111.637 M/sec                    (62.54%)
+        23,603,386      branch-misses             #    0.78% of all branches          (62.25%)
+     4,313,618,462      L1-dcache-loads           # 1579.543 M/sec                    (60.97%)
+        48,973,504      L1-dcache-load-misses     #    1.14% of all L1-dcache hits    (25.17%)
+         3,195,285      LLC-loads                 #    1.170 M/sec                    (25.40%)
+           255,058      LLC-load-misses           #    7.98% of all LL-cache hits     (37.86%)
+
+       2.730652248 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2602.549631      task-clock (msec)         #    1.000 CPUs utilized          
+               195      context-switches          #    0.075 K/sec                  
+                32      cpu-migrations            #    0.012 K/sec                  
+             5,748      page-faults               #    0.002 M/sec                  
+     8,015,537,837      cycles                    #    3.080 GHz                      (50.11%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,567,241,533      instructions              #    1.82  insns per cycle          (62.54%)
+     3,029,053,939      branches                  # 1163.879 M/sec                    (62.53%)
+        25,372,510      branch-misses             #    0.84% of all branches          (62.52%)
+     4,286,029,083      L1-dcache-loads           # 1646.858 M/sec                    (61.84%)
+        47,036,395      L1-dcache-load-misses     #    1.10% of all L1-dcache hits    (25.10%)
+         3,091,493      LLC-loads                 #    1.188 M/sec                    (25.19%)
+           199,806      LLC-load-misses           #    6.46% of all LL-cache hits     (37.70%)
+
+       2.602265648 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2736.776926      task-clock (msec)         #    1.000 CPUs utilized          
+               192      context-switches          #    0.070 K/sec                  
+                31      cpu-migrations            #    0.011 K/sec                  
+             5,725      page-faults               #    0.002 M/sec                  
+     7,881,378,292      cycles                    #    2.880 GHz                      (50.13%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,504,932,847      instructions              #    1.84  insns per cycle          (62.60%)
+     3,027,826,267      branches                  # 1106.347 M/sec                    (62.61%)
+        21,841,737      branch-misses             #    0.72% of all branches          (62.68%)
+     4,293,953,140      L1-dcache-loads           # 1568.982 M/sec                    (62.25%)
+        92,974,225      L1-dcache-load-misses     #    2.17% of all L1-dcache hits    (25.02%)
+         5,704,273      LLC-loads                 #    2.084 M/sec                    (25.04%)
+           211,536      LLC-load-misses           #    3.71% of all LL-cache hits     (37.69%)
+
+       2.736663455 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2723.531660      task-clock (msec)         #    1.000 CPUs utilized          
+               190      context-switches          #    0.070 K/sec                  
+                32      cpu-migrations            #    0.012 K/sec                  
+             5,729      page-faults               #    0.002 M/sec                  
+     7,944,664,648      cycles                    #    2.917 GHz                      (50.08%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,623,127,334      instructions              #    1.84  insns per cycle          (62.56%)
+     3,033,960,035      branches                  # 1113.980 M/sec                    (62.56%)
+        25,159,357      branch-misses             #    0.83% of all branches          (62.55%)
+     4,267,073,482      L1-dcache-loads           # 1566.743 M/sec                    (61.90%)
+        50,047,087      L1-dcache-load-misses     #    1.17% of all L1-dcache hits    (25.01%)
+         2,682,605      LLC-loads                 #    0.985 M/sec                    (25.13%)
+           212,143      LLC-load-misses           #    7.91% of all LL-cache hits     (37.60%)
+
+       2.723329710 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2690.119049      task-clock (msec)         #    1.000 CPUs utilized          
+               183      context-switches          #    0.068 K/sec                  
+                35      cpu-migrations            #    0.013 K/sec                  
+             5,714      page-faults               #    0.002 M/sec                  
+     7,859,475,186      cycles                    #    2.922 GHz                      (50.01%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,623,768,373      instructions              #    1.86  insns per cycle          (62.48%)
+     3,037,166,999      branches                  # 1129.008 M/sec                    (62.53%)
+        22,997,776      branch-misses             #    0.76% of all branches          (62.55%)
+     4,288,231,301      L1-dcache-loads           # 1594.067 M/sec                    (61.32%)
+        54,381,956      L1-dcache-load-misses     #    1.27% of all L1-dcache hits    (25.17%)
+         2,976,450      LLC-loads                 #    1.106 M/sec                    (25.12%)
+           243,202      LLC-load-misses           #    8.17% of all LL-cache hits     (37.55%)
+
+       2.689755438 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2833.616448      task-clock (msec)         #    0.999 CPUs utilized          
+               190      context-switches          #    0.067 K/sec                  
+                37      cpu-migrations            #    0.013 K/sec                  
+             5,714      page-faults               #    0.002 M/sec                  
+     8,205,458,135      cycles                    #    2.896 GHz                      (50.20%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,271,886,878      instructions              #    1.74  insns per cycle          (62.70%)
+     2,999,527,317      branches                  # 1058.551 M/sec                    (62.74%)
+        21,784,434      branch-misses             #    0.73% of all branches          (62.62%)
+     4,235,483,078      L1-dcache-loads           # 1494.727 M/sec                    (61.22%)
+        50,394,045      L1-dcache-load-misses     #    1.19% of all L1-dcache hits    (25.01%)
+         6,782,514      LLC-loads                 #    2.394 M/sec                    (25.20%)
+            98,245      LLC-load-misses           #    1.45% of all LL-cache hits     (37.69%)
+
+       2.835115221 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2752.742637      task-clock (msec)         #    1.000 CPUs utilized          
+               184      context-switches          #    0.067 K/sec                  
+                34      cpu-migrations            #    0.012 K/sec                  
+             5,725      page-faults               #    0.002 M/sec                  
+     8,352,372,538      cycles                    #    3.034 GHz                      (50.05%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,634,857,358      instructions              #    1.75  insns per cycle          (62.51%)
+     3,039,715,220      branches                  # 1104.250 M/sec                    (62.47%)
+        21,563,738      branch-misses             #    0.71% of all branches          (62.52%)
+     4,260,892,295      L1-dcache-loads           # 1547.872 M/sec                    (61.91%)
+        82,577,069      L1-dcache-load-misses     #    1.94% of all L1-dcache hits    (25.10%)
+         5,805,559      LLC-loads                 #    2.109 M/sec                    (25.18%)
+           250,927      LLC-load-misses           #    4.32% of all LL-cache hits     (37.69%)
+
+       2.752589909 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2682.795065      task-clock (msec)         #    1.000 CPUs utilized          
+               186      context-switches          #    0.069 K/sec                  
+                37      cpu-migrations            #    0.014 K/sec                  
+             5,370      page-faults               #    0.002 M/sec                  
+     8,136,834,243      cycles                    #    3.033 GHz                      (50.23%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,552,668,208      instructions              #    1.79  insns per cycle          (62.75%)
+     3,036,686,371      branches                  # 1131.911 M/sec                    (62.63%)
+        20,817,289      branch-misses             #    0.69% of all branches          (62.53%)
+     4,315,273,530      L1-dcache-loads           # 1608.499 M/sec                    (61.30%)
+        76,517,398      L1-dcache-load-misses     #    1.77% of all L1-dcache hits    (25.08%)
+         5,472,929      LLC-loads                 #    2.040 M/sec                    (25.11%)
+           250,156      LLC-load-misses           #    4.57% of all LL-cache hits     (37.72%)
+
+       2.682433742 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2839.882949      task-clock (msec)         #    1.000 CPUs utilized          
+               192      context-switches          #    0.068 K/sec                  
+                36      cpu-migrations            #    0.013 K/sec                  
+             5,720      page-faults               #    0.002 M/sec                  
+     8,085,928,557      cycles                    #    2.847 GHz                      (49.87%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,287,702,415      instructions              #    1.77  insns per cycle          (62.36%)
+     2,999,834,410      branches                  # 1056.323 M/sec                    (62.51%)
+        20,680,004      branch-misses             #    0.69% of all branches          (62.77%)
+     4,204,579,739      L1-dcache-loads           # 1480.547 M/sec                    (61.98%)
+        46,541,155      L1-dcache-load-misses     #    1.11% of all L1-dcache hits    (24.96%)
+         5,995,382      LLC-loads                 #    2.111 M/sec                    (24.97%)
+           106,207      LLC-load-misses           #    1.77% of all LL-cache hits     (37.42%)
+
+       2.838898949 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2838.890652      task-clock (msec)         #    1.000 CPUs utilized          
+               197      context-switches          #    0.069 K/sec                  
+                39      cpu-migrations            #    0.014 K/sec                  
+             5,391      page-faults               #    0.002 M/sec                  
+     8,129,000,794      cycles                    #    2.863 GHz                      (50.23%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,207,874,373      instructions              #    1.75  insns per cycle          (62.66%)
+     2,987,584,080      branches                  # 1052.377 M/sec                    (62.43%)
+        21,055,130      branch-misses             #    0.70% of all branches          (62.56%)
+     4,170,659,095      L1-dcache-loads           # 1469.116 M/sec                    (61.94%)
+        55,443,699      L1-dcache-load-misses     #    1.33% of all L1-dcache hits    (25.30%)
+         5,603,642      LLC-loads                 #    1.974 M/sec                    (25.34%)
+           106,189      LLC-load-misses           #    1.89% of all LL-cache hits     (37.78%)
+
+       2.838408075 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2681.006219      task-clock (msec)         #    1.000 CPUs utilized          
+               186      context-switches          #    0.069 K/sec                  
+                36      cpu-migrations            #    0.013 K/sec                  
+             5,722      page-faults               #    0.002 M/sec                  
+     8,120,433,856      cycles                    #    3.029 GHz                      (50.20%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,533,245,462      instructions              #    1.79  insns per cycle          (62.67%)
+     3,041,127,507      branches                  # 1134.323 M/sec                    (62.57%)
+        21,060,143      branch-misses             #    0.69% of all branches          (62.82%)
+     4,307,820,137      L1-dcache-loads           # 1606.792 M/sec                    (61.63%)
+        57,476,846      L1-dcache-load-misses     #    1.33% of all L1-dcache hits    (25.12%)
+         4,348,413      LLC-loads                 #    1.622 M/sec                    (25.06%)
+           238,118      LLC-load-misses           #    5.48% of all LL-cache hits     (37.74%)
+
+       2.680689686 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2804.926503      task-clock (msec)         #    1.000 CPUs utilized          
+               194      context-switches          #    0.069 K/sec                  
+                40      cpu-migrations            #    0.014 K/sec                  
+             5,708      page-faults               #    0.002 M/sec                  
+     8,043,972,410      cycles                    #    2.868 GHz                      (50.32%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,209,384,200      instructions              #    1.77  insns per cycle          (62.87%)
+     2,977,946,340      branches                  # 1061.684 M/sec                    (62.88%)
+        21,998,102      branch-misses             #    0.74% of all branches          (62.85%)
+     4,175,162,776      L1-dcache-loads           # 1488.511 M/sec                    (61.96%)
+        72,108,007      L1-dcache-load-misses     #    1.73% of all L1-dcache hits    (24.96%)
+         6,317,725      LLC-loads                 #    2.252 M/sec                    (25.01%)
+            42,291      LLC-load-misses           #    0.67% of all LL-cache hits     (37.77%)
+
+       2.804804667 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2670.442336      task-clock (msec)         #    1.000 CPUs utilized          
+               184      context-switches          #    0.069 K/sec                  
+                31      cpu-migrations            #    0.012 K/sec                  
+             5,701      page-faults               #    0.002 M/sec                  
+     8,138,835,954      cycles                    #    3.048 GHz                      (50.15%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,592,849,828      instructions              #    1.79  insns per cycle          (62.63%)
+     3,039,671,213      branches                  # 1138.265 M/sec                    (62.68%)
+        20,729,440      branch-misses             #    0.68% of all branches          (62.72%)
+     4,299,976,153      L1-dcache-loads           # 1610.211 M/sec                    (61.84%)
+        55,012,451      L1-dcache-load-misses     #    1.28% of all L1-dcache hits    (24.91%)
+         4,239,737      LLC-loads                 #    1.588 M/sec                    (25.18%)
+           226,972      LLC-load-misses           #    5.35% of all LL-cache hits     (37.67%)
+
+       2.669906444 seconds time elapsed
+
+------------------------------
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2792.412900      task-clock (msec)         #    1.000 CPUs utilized          
+               187      context-switches          #    0.067 K/sec                  
+                38      cpu-migrations            #    0.014 K/sec                  
+             6,223      page-faults               #    0.002 M/sec                  
+     8,099,291,616      cycles                    #    2.900 GHz                      (50.01%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,233,403,594      instructions              #    1.76  insns per cycle          (62.49%)
+     3,002,800,494      branches                  # 1075.343 M/sec                    (62.21%)
+        21,208,270      branch-misses             #    0.71% of all branches          (62.33%)
+     4,180,726,628      L1-dcache-loads           # 1497.174 M/sec                    (62.03%)
+        44,537,744      L1-dcache-load-misses     #    1.07% of all L1-dcache hits    (25.40%)
+         5,820,259      LLC-loads                 #    2.084 M/sec                    (25.22%)
+           102,226      LLC-load-misses           #    1.76% of all LL-cache hits     (37.55%)
+
+       2.793218262 seconds time elapsed
+
+
+ Performance counter stats for 'taskset -c 0,1,2,3 snap run minebench.BIRCHMedium':
+
+       2681.967059      task-clock (msec)         #    1.000 CPUs utilized          
+               191      context-switches          #    0.071 K/sec                  
+                33      cpu-migrations            #    0.012 K/sec                  
+             6,228      page-faults               #    0.002 M/sec                  
+     8,133,281,524      cycles                    #    3.033 GHz                      (50.16%)
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+    14,590,942,087      instructions              #    1.79  insns per cycle          (62.69%)
+     3,036,646,125      branches                  # 1132.246 M/sec                    (62.79%)
+        20,640,145      branch-misses             #    0.68% of all branches          (62.95%)
+     4,299,864,445      L1-dcache-loads           # 1603.250 M/sec                    (61.56%)
+        51,865,801      L1-dcache-load-misses     #    1.21% of all L1-dcache hits    (24.83%)
+         4,344,465      LLC-loads                 #    1.620 M/sec                    (25.02%)
+           184,584      LLC-load-misses           #    4.25% of all LL-cache hits     (37.64%)
+
+       2.680990699 seconds time elapsed
 

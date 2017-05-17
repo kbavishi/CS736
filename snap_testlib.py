@@ -16,31 +16,60 @@ from termcolor import cprint
 USERNAME = "kbavishi"
 PCAP_FILE = "output.pcap"
 
-snap_args = {
-    '__KMEANS__': 'minebench.KMeans',
-    '__FUZZY_KMEANS__': 'minebench.FuzzyKMeans',
-    '__HOP__': 'minebench.HOP',
+snap_app_cmd = {
+    '__KMEANS__small': 'minebench.KMeansSmall',
+    '__KMEANS__medium': 'minebench.KMeansMedium',
+    '__FUZZY_KMEANS__small': 'minebench.FuzzyKMeansSmall',
+    '__FUZZY_KMEANS__medium': 'minebench.FuzzyKMeansMedium',
+    '__HOP__small': 'minebench.HOPSmall',
+    '__HOP__medium': 'minebench.HOPMedium',
+    '__HOP__large': 'minebench.HOPLarge',
     '__PLSA__': 'minebench.PLSA',
-    '__ScalParC__': 'minebench.ScalParC',
+    '__ScalParC__small': 'minebench.ScalParCSmall',
+    '__ScalParC__medium': 'minebench.ScalParCMedium',
+    '__ScalParC__large': 'minebench.ScalParCLarge',
     '__SEMPHY__': 'minebench.SEMPHY',
     '__SVM_RFE__': 'minebench.SVMRFE',
     '__ParETI__': 'minebench.ParETI',
     '__RSEARCH__': 'minebench.RSEARCH',
-    '__BIRCH__': 'minebench.BIRCH',
-    '__APRIORI__': 'minebench.Apriori',
-    '__ECLAT__': 'minebench.ECLAT',
+    '__BIRCH__small': 'minebench.BIRCHSmall',
+    '__BIRCH__medium': 'minebench.BIRCHMedium',
+    '__BIRCH__large': 'minebench.BIRCHLarge',
+    '__APRIORI__small': 'minebench.AprioriSmall',
+    '__APRIORI__medium': 'minebench.AprioriMedium',
+    '__APRIORI__large': 'minebench.AprioriLarge',
+    '__ECLAT__small': 'minebench.ECLATSmall',
+    '__ECLAT__medium': 'minebench.ECLATMedium',
+    '__ECLAT__large': 'minebench.ECLATLarge',
     '__BAYESIAN__': 'minebench.Bayesian',
+    '__SYSBENCH_MEM__': 'minebench.SysbenchMem',
+    '__SYSBENCH_DISK__': 'minebench.SysbenchDisk',
+    '__SYSBENCH_DISK_PREP__': 'minebench.SysbenchDiskPrep',
+    '__SYSBENCH_DISK_CLEANUP__': 'minebench.SysbenchDiskCleanup',
 }
 
-INTERFERENCE_TEST_ARGS = [
+INTERFERENCE_TEST_SPEC = [
     ("PLSA", {"seq1": "30k_1.txt", "seq2": "30k_2.txt",
               "matrix": "pam120.bla", "num_threads": 1}),
 ]
 
-PARALLEL_S_TEST_ARGS = [
+SYSBENCH_UTIL_TEST_SPEC = [
+    ("SysbenchDiskPrep", {"file_total_size": "3G"}),
+    ("SysbenchDiskCleanup", {"file_total_size": "3G"}),
+]
+
+SYSBENCH_TEST_SPEC = [
+    ("SysbenchMem", {"num_threads": 1, "mem_block_size": "50G",
+                     "total_mem_size": "1000G"}),
+    ("SysbenchDisk", {"num_threads": 1, "file_total_size": "3G",
+                      "file_test_mode": "rndrw", "max_requests": 0,
+                      "max_time": 120}),
+]
+
+PARALLEL_S_TEST_SPEC = [
     ("HOP", {"dataset": "particles_0_64", "num_threads": 1}),
-    ("KMeans", {"dataset": "edge100", "num_threads": 1}),
-    ("FuzzyKMeans", {"dataset": "edge100", "num_threads": 1}),
+    ("KMeans", {"dataset": "edge100", "num_threads": 1, "binary": False}),
+    ("FuzzyKMeans", {"dataset": "edge100", "num_threads": 1, "binary": False}),
     ("ScalParC", {"dataset": "para_F26-A32-D125K\/F26-A32-D125K.tab",
                   "num_records": 125000, "num_attributes": 32,
                   "num_threads": 1}),
@@ -50,7 +79,7 @@ PARALLEL_S_TEST_ARGS = [
                  "num_threads": 1}),
 ]
 
-PARALLEL_M_TEST_ARGS = [
+PARALLEL_M_TEST_SPEC = [
     ("HOP", {"dataset": "particles_0_128", "num_threads": 1}),
     ("KMeans", {"dataset": "edge", "num_threads": 1}),
     ("FuzzyKMeans", {"dataset": "edge", "num_threads": 1}),
@@ -63,7 +92,7 @@ PARALLEL_M_TEST_ARGS = [
                  "num_threads": 1}),
 ]
 
-PARALLEL_L_TEST_ARGS = [
+PARALLEL_L_TEST_SPEC = [
     ("HOP", {"dataset": "particles_0_256", "num_threads": 1}),
     ("ScalParC", {"dataset": "para_F26-A64-D250K\/F26-A64-D250K.tab",
                   "num_records": 250000, "num_attributes": 64,
@@ -78,21 +107,21 @@ PARALLEL_L_TEST_ARGS = [
     #             "num_threads": 1}),
 ]
 
-SERIAL_S_TEST_ARGS = [
+SERIAL_S_TEST_SPEC = [
     ("BIRCH", {"para_file": "AMR_64.para", "schema_file": "AMR_64.scheme",
                "proj_file": "AMR_64.proj", "dataset": "particles_0_64_ascii"}),
     ("ECLAT", {"dataset": "ntrans_400.tlen_10.nitems_1.npats_2000.patlen_6",
                "partitions": 4}),
 ]
 
-SERIAL_M_TEST_ARGS = [
+SERIAL_M_TEST_SPEC = [
     ("BIRCH", {"para_file": "AMR_128.para", "schema_file": "AMR_128.scheme",
                "proj_file": "AMR_128.proj", "dataset": "particles_0_128_ascii"}),
     ("ECLAT", {"dataset": "ntrans_1000.tlen_10.nitems_1.npats_2000.patlen_6",
                "partitions": 4}),
 ]
 
-SERIAL_L_TEST_ARGS = [
+SERIAL_L_TEST_SPEC = [
     ("BIRCH", {"para_file": "AMR_256.para", "schema_file": "AMR_256.scheme",
                "proj_file": "AMR_256.proj", "dataset": "particles_0_256_ascii"}),
     ("ECLAT", {"dataset": "ntrans_2000.tlen_20.nitems_1.npats_2000.patlen_6",
@@ -161,12 +190,17 @@ class TestShell(spur.SshShell):
         self.processes += [proc]
         return proc
 
+    def is_public_addr(self, ip_addr):
+        """Hacky utility function which guesses if given IP addr is a public IP addr
+        or a private one"""
+        return not ip_addr.startswith("10.") and not ip_addr.startswith("172.")
+
     def get_public_ip_addr(self):
         """Gives you the public IP address of the node"""
         result = self.run("hostname -I")
         ip_addrs = result.output.split(' ')
         for ip_addr in ip_addrs:
-            if is_public_addr(ip_addr):
+            if self.is_public_addr(ip_addr):
                 return ip_addr
         assert False, "Could not find public IP address"
 
@@ -260,7 +294,10 @@ def generate_test_args(test_name, **kwargs):
         exec_name = "$SNAP\/KMeans\/example"
         dataset = "$SNAP\/datasets\/kmeans\/%s" % kwargs["dataset"]
         threads = kwargs["num_threads"]
-        snap_script_args = "%s -i %s -b -o -p %s" % (exec_name, dataset, threads)
+        binary = kwargs.get("binary", False)
+        snap_script_args = "%s -i %s -o -p %s" % (exec_name, dataset, threads)
+        if binary:
+            snap_script_args += " -b"
         key = "__KMEANS__"
 
     elif test_name == "FuzzyKMeans":
@@ -269,7 +306,10 @@ def generate_test_args(test_name, **kwargs):
         exec_name = "$SNAP\/KMeans\/example"
         dataset = "$SNAP\/datasets\/kmeans\/%s" % kwargs["dataset"]
         threads = kwargs["num_threads"]
-        snap_script_args = "%s -i %s -b -o -f -p %s" % (exec_name, dataset, threads)
+        binary = kwargs.get("binary", False)
+        snap_script_args = "%s -i %s -o -f -p %s" % (exec_name, dataset, threads)
+        if binary:
+            snap_script_args += " -b"
         key = "__FUZZY_KMEANS__"
 
     elif test_name == "HOP":
@@ -404,55 +444,122 @@ def generate_test_args(test_name, **kwargs):
                                                table_file, bc_file)
         key = "__BAYESIAN__"
 
+    elif test_name == "SysbenchMem":
+        ld_lib_path = "$SNAP\/usr\/lib:$SNAP\/usr\/lib\/x86_64-linux-gnu:\/usr\/lib"
+        exec_name = "env LD_LIBRARY_PATH=%s "\
+                    "$SNAP\/usr\/bin\/sysbench" % ld_lib_path
+        num_threads = kwargs.get("num_threads", 1)
+        mem_block_size = kwargs.get("mem_block_size", "50G")
+        total_mem_size = kwargs.get("total_mem_size", "1000G")
+        snap_script_args = "%s --test=memory --num-threads=%s "\
+                           "--memory-block-size=%s "\
+                           "--memory-total-size=%s run" % (exec_name, num_threads,
+                                                           mem_block_size,
+                                                           total_mem_size)
+        key = "__SYSBENCH_MEM__"
+
+    elif test_name == "SysbenchDisk":
+        ld_lib_path = "$SNAP\/usr\/lib:$SNAP\/usr\/lib\/x86_64-linux-gnu:\/usr\/lib"
+        exec_name = "env LD_LIBRARY_PATH=%s "\
+                    "$SNAP\/usr\/bin\/sysbench" % ld_lib_path
+        num_threads = kwargs.get("num_threads", 1)
+        file_total_size = kwargs.get("file_total_size", "3G")
+        file_test_mode = kwargs.get("file_test_mode", "rndrw")
+        max_requests = kwargs.get("max_requests", 0)
+        max_time = kwargs.get("max_time", 300)
+        snap_script_args = "%s --test=fileio --num-threads=%s "\
+               "--file-total-size=%s --file-test-mode=%s --max-requests=%s "\
+               "--max-time=%s run" % (exec_name, num_threads, file_total_size,
+                                      file_test_mode, max_requests, max_time)
+        key = "__SYSBENCH_DISK__"
+
+    elif test_name == "SysbenchDiskPrep":
+        ld_lib_path = "$SNAP\/usr\/lib:$SNAP\/usr\/lib\/x86_64-linux-gnu:\/usr\/lib"
+        exec_name = "env LD_LIBRARY_PATH=%s "\
+                    "$SNAP\/usr\/bin\/sysbench" % ld_lib_path
+        file_total_size = kwargs.get("file_total_size", "3G")
+        snap_script_args = "%s --test=fileio "\
+                           "--file-total-size=%s prepare" % (exec_name,
+                                                             file_total_size)
+        key = "__SYSBENCH_DISK_PREP__"
+
+    elif test_name == "SysbenchDiskCleanup":
+        ld_lib_path = "$SNAP\/usr\/lib:$SNAP\/usr\/lib\/x86_64-linux-gnu:\/usr\/lib"
+        exec_name = "env LD_LIBRARY_PATH=%s "\
+                    "$SNAP\/usr\/bin\/sysbench" % ld_lib_path
+        file_total_size = kwargs.get("file_total_size", "3G")
+        snap_script_args = "%s --test=fileio "\
+                           "--file-total-size=%s cleanup" % (exec_name,
+                                                             file_total_size)
+        key = "__SYSBENCH_DISK_CLEANUP__"
+
+
     else:
         assert False, "Unsupported testcase"
 
     return key, snap_script_args
 
-def build_test_args(test_args):
-    """Expected input format is like this:
+def build_test_dict(test_spec, test_type=""):
+    """Expected input format of test_spec is like this:
 
     [(test_name1, {"arg1":val1, "arg2":val2}),
      (test_name2, ...) ]
 
     """
     tests = {}
-    for test_name, test_kwargs in test_args:
+    for test_name, test_kwargs in test_spec:
         key, val = generate_test_args(test_name, **test_kwargs)
+        key += test_type
         tests[key] = val
     return tests
 
-def run_snap(shell, test_name, test_args, cpu=0, interference=False):
+def run_snap(shell, test_name, cpu=0, interference=False):
     if type(cpu) == int:
         cpu = [str(cpu)]
     elif type(cpu) == list:
         cpu = map(str, cpu)
     output = "-" * 30 + "\n"
-    #output += "SNAP_TEST: %s, ARGS: %s\n" % (test_name, test_args)
 
     # Drop VM caches before every run to not see false gains
-    shell.run("sync")
-    shell.run("echo 3 | sudo tee /proc/sys/vm/drop_caches")
+    #shell.run("sync")
+    #shell.run("echo 3 | sudo tee /proc/sys/vm/drop_caches")
 
-    prefix_cmd = "sudo perf stat -d taskset -c %s "\
-                 "snap run" % (",".join(cpu))
+    if test_name == "__SYSBENCH_DISK__":
+        # Need to run prepare and cleanup scripts before running snap
+        shell.run("sudo snap run minebench.SysbenchDiskPrep")
+
+    sysbench_test = "SYSBENCH" in test_name
+    if sysbench_test:
+        # Don't run perf stat for sysbench tests as they may hamper performance
+        cmd = "sudo taskset -c %s snap run %s" % (",".join(cpu),
+                                                  snap_app_cmd[test_name])
+        output += "%s\n" % cmd
+    else:
+        cmd = "sudo perf stat -d taskset -c %s "\
+              "snap run %s" % (",".join(cpu), snap_app_cmd[test_name])
 
     if interference:
-        # Spawn a snap process which runs before us
-        proc1 = shell.spawn("%s %s" % (prefix_cmd, snap_args["__PLSA__"]),
-                            store_pid=True)
+        # Spawn a snap process which runs just before us
+        proc1 = shell.spawn(cmd, store_pid=True)
 
     # Run the actual snap command and measure its running time
-    result = shell.run("%s %s" % (prefix_cmd, snap_args[test_name]))
-    #output += result.output
-    output += result.stderr_output
+    result = shell.run(cmd)
+    # Since we don't run perf stat for sysbench tests, we need to save the
+    # output for parsing later
+    output += result.output if sysbench_test else result.stderr_output
 
     if interference:
-        # Kill the spawned snap process
-        shell.run("sudo pkill -f %s" %
-                  snap_args["__PLSA__"].replace("minebench.",""))
-        #proc1.send_signal(signal.SIGKILL)
+        # Measure the running time of the first process
+        result = proc1.wait_for_result()
+        # Since we don't run perf stat for sysbench tests, we need to save the
+        # output for parsing later
+        output += "%s\n" % cmd if sysbench_test else ""
+        output += result.output if sysbench_test else result.stderr_output
 
+    if test_name == "__SYSBENCH_DISK__":
+        # Need to run prepare and cleanup scripts before running snap
+        shell.run("sudo snap run minebench.SysbenchDiskCleanup")
+        
     return output
 
 def parse_host(host_str):
@@ -496,6 +603,65 @@ def install_pkg(shell, pkg_name):
             shell.run("sudo apt-get update")
             shell.run("sudo apt-get install -y %s" % pkg_name)
 
+def get_test_spec(workload_type, test_type, num_threads=1):
+    if workload_type == "parallel":
+        if test_type == "small":
+            test_spec = list(PARALLEL_S_TEST_SPEC)
+        elif test_type == "medium":
+            test_spec = list(PARALLEL_M_TEST_SPEC)
+        elif test_type == "large":
+            test_spec = list(PARALLEL_L_TEST_SPEC)
+        else:
+            assert False, "Unsupported test type %s" % test_type
+
+        for test_name, test_args in test_spec:
+            test_args["num_threads"] = num_threads
+
+    elif workload_type == "serial":
+        if test_type == "small":
+            test_spec = list(SERIAL_S_TEST_SPEC)
+        elif test_type == "medium":
+            test_spec = list(SERIAL_M_TEST_SPEC)
+        elif test_type == "large":
+            test_spec = list(SERIAL_L_TEST_SPEC)
+        else:
+            assert False, "Unsupported test type %s" % test_type
+    else:
+        assert False, "Unsupported workload type: %s" % workload_type
+
+    return test_spec
+
+def build_minebench_snap(shell, num_threads):
+    """
+    Creates the appropriate testspec for creating the YAML file and then builds
+    the minebench snap.
+    """
+    final_test_spec = []
+    final_test_dict = {}
+
+    for workload_type in ("serial", "parallel"):
+        for test_type in ("small", "medium", "large"):
+            # Get the necessary test spec and dictionaries
+            test_spec = get_test_spec(workload_type, test_type, num_threads)
+            test_dict = build_test_dict(test_spec, test_type=test_type)
+
+            # Update our global test spec and dictionaries
+            final_test_spec.extend(test_spec)
+            final_test_dict.update(test_dict)
+
+    # Add the Sysbench related tests
+    final_test_spec.extend(SYSBENCH_TEST_SPEC)
+    test_dict = build_test_dict(SYSBENCH_TEST_SPEC)
+    final_test_dict.update(test_dict)
+
+    # Add the Sysbench util related scripts
+    final_test_spec.extend(SYSBENCH_UTIL_TEST_SPEC)
+    test_dict = build_test_dict(SYSBENCH_UTIL_TEST_SPEC)
+    final_test_dict.update(test_dict)
+
+    # Now build our snap
+    _build_minebench_yaml_and_snap(shell, final_test_dict, final_test_spec)
+
 def generate_apriori_files(shell, data_file, offset_file, partitions):
     # Make sure our offset program exists
     shell.run("cd snap/prime/Apriori; make offsets", use_bash=True)
@@ -505,26 +671,26 @@ def generate_apriori_files(shell, data_file, offset_file, partitions):
 
     # First generate the data binary
     shell.run("%s %s/%s %s | tee %s/%s_P%s.txt" % (offsets_cmd, data_prefix,
-                                                   data_file, data_prefix,
-                                                   offset_file, partitions))
+                                                   data_file, partitions,
+                                                   data_prefix, offset_file,
+                                                   partitions))
 
-def check_apriori_data(shell, test_args):
+def check_apriori_data(shell, test_spec):
     data_prefix = "snap/prime/datasets/APR"
-
-    for test_name, args in test_args:
+    changed = False
+    for test_name, args in test_spec:
         if test_name != "Apriori":
             continue
         # Check if conf file exists
         try:
-            shell.run("ls %s/offset_file_%s_*.txt" % (data_prefix,
-                                                      args["partitions"]))
-            return False
+            shell.run("ls %s/%s_P%s.txt" % (data_prefix, args["offset_file"],
+                                            args["num_threads"]))
         except spur.RunProcessError:
             generate_apriori_files(shell, args["dataset"], args["offset_file"],
-                                   args["partitions"])
-            return True
+                                   args["num_threads"])
+            changed = True
 
-    return False
+    return changed
 
 def generate_eclat_files(shell, data_file, partitions):
     bin_cmd = "snap/prime/ECLAT/util/makebin"
@@ -546,21 +712,29 @@ def generate_eclat_files(shell, data_file, partitions):
               "-p %s" % (tpose_cmd, data_prefix, data_file, data_prefix,
                          data_file, partitions))
 
-def check_eclat_data(shell, test_args):
+def check_eclat_data(shell, test_spec):
     data_prefix = "snap/prime/datasets/APR"
-
-    for test_name, args in test_args:
+    changed = False
+    for test_name, args in test_spec:
         if test_name != "ECLAT":
             continue
         # Check if conf file exists
         try:
             shell.run("ls %s/%s.conf" % (data_prefix, args["dataset"]))
-            return False
         except spur.RunProcessError:
             generate_eclat_files(shell, args["dataset"], args["partitions"])
-            return True
+            changed = True
 
-    return False
+    return changed
+
+def disable_hyperthreading(shell):
+    # Assume that this is c220g1 for now
+    assert "c220g1" in shell.run("hostname -A").output
+
+    cores = 32
+    for cpu_core in xrange(cores/2, cores):
+        shell.run("echo 0 | sudo tee /sys/devices/system/cpu/cpu%d/online" %
+                  cpu_core)
 
 def setup_perf(shell):
     version = shell.run("uname -r").output.strip()
@@ -581,19 +755,14 @@ def setup_minebench_snap_deps(shell):
 
     shell.run("sudo snap remove minebench", allow_error=True)
 
-def build_minebench_snap(shell, run_tests, test_spec):
+def _build_minebench_yaml_and_snap(shell, test_dict, test_spec):
     shell.copyFile("snapcraft.yaml", "snap/snapcraft.yaml")
     shell.copyFile("wrapper", "snap/wrapper")
     shell.run("chmod +x snap/wrapper")
 
     # Modify snapcraft YAML
-    for key, value in run_tests.items():
+    for key, value in test_dict.items():
         shell.run("sed -i -e 's/%s/%s/g' snap/snapcraft.yaml" % (key, value))
-
-    # Also add args for PLSA which we will use for interference
-    for test_name, test_kwargs in INTERFERENCE_TEST_ARGS:
-        shell.run("sed -i -e 's/%s/%s/g' snap/snapcraft.yaml" %
-                  (generate_test_args(test_name, **test_kwargs)))
 
     # Remove the previous version for sanity
     shell.run("sudo snap remove minebench", allow_error=True)
@@ -622,10 +791,14 @@ def build_minebench_snap(shell, run_tests, test_spec):
     # Install it now
     shell.run("sudo snap install --devmode snap/minebench_0.1_amd64.snap")
 
+    # Remove the snap because it occupies a lot of space
+    shell.run("rm snap/minebench_0.1_amd64.snap")
+
 def setup_shell(host_str):
     hostname, port = parse_host(host_str)
     shell = create_ssh_shell(hostname, port=int(port))
     setup_minebench_snap_deps(shell)
     setup_perf(shell)
+    disable_hyperthreading(shell)
     return shell
 

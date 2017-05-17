@@ -1,0 +1,17 @@
+
+Introduction - In this section, we discuss the mechanisms used by Snaps to provide performance isolation and their strengths and limitations. Snaps do not have dedicated cgroups by default as provided by Docker containers. This means that the only performance isolation that can be provided is through the default root cgroup membership. Its implications on CPU, disk and memory isolation are discussed below.
+
+CPU isolation - The default cgroup membership means that every Snap process gets 1024 CPU shares. Thus competing Snaps will receive equal share of the CPUs. However, this also means that Snaps are not as useful as say Docker containers for usage scenarios which require different priorities for different applications. If needed, new cgroups can be created and Snap processes can be moved into them, but manual cgroup management is needed as opposed to the automatic cgroup management in Docker. 
+
+Disk isolation - There are two aspects to disk isolation -- limiting the total amount of usage, and rate-limiting the read / write rate to disk. For the former, Snappy provide a separate mount filesystem for each Snap so that a malicious app can not exhaust the entire disk space. However for rate-limiting, Snappy provides no mechanism other than the global blkio cgroup which has I/O rate-limiting disabled by default.
+
+Memory isolation - Snappy provides no mechanisms for memory isolation other than the global default memory cgroup. The default memory cgroup has no usage limits set by default, but can be used to dictate a global usage limit for all processes in the system.
+
+Policies Supported - ?
+
+Consolidation limits - ?
+
+TODO - Find out more about default blkio and memory cgroups
+1. Disk throttling - Disabled by default
+2. Default FS size / snap - ?
+3. Default mem size - No limits

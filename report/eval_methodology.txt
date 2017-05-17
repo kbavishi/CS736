@@ -1,0 +1,58 @@
+5. Evaluation & Results
+
+5.1 Performance Isolation
+
+In this section, we talk about the exact methodology used to measure performance isolation for Docker, Snap and unikernels. 
+
+5.1.1 Experiment methodology
+
+Hardware details - The following table describes some of the important system settings that were used for our measurements. We disable hyperthreading to help get consistency among various runs.
+    CPU - Four Intel E5-2630 v3 8-core CPUs at 2.40 GHz 
+    RAM - 128GB ECC Memory
+    OS - Ubuntu 16.04
+    Kernel version - 4.4.0-45-generic
+    CPU freq. scaling - Performance
+    Turbo boost - Enabled
+    Hyperthreading - Disabled
+
+Metric - We develop a metric to measure performance isolation, and it is calculated using the following steps:
+1. Measure standalone completion time: Measure the completion time for each test when it is run alone without any interference. Let's denote this by $T_{standalone}$. \\
+2. Measure completion time during interference: Run two instances of the same test in parallel, and record the completion times of both processes. Let's denote them by $T1_{interference}$ and $T2_{interference}$
+3. Repeat: Get an average of 5 runs
+4. Calculate isolation metric: We calculate the metric by subtracting the difference the normalized completion times of the two instances running in parallel. Ideally, the two instances should complete in about the same time, therefore a perfectly fair system, the metric should be zero. For practical systems, the lower this metric, the better the isolation provided. 
+$$IM = \frac{\lvert{avg(T1_{interference}) - avg(T2_{interference})\rvert}}{avg(T_{standalone})}$$
+
+5.1.2 Workloads
+
+We pick several benchmarks from the Minebench suite to test performance isolation for real applications which involve the use of CPU, memory and disk all at once. Most of the Minebench benchmarks are CPU intensive, and some have substantial disk and memory requirements. To test for disk and memory isolation under stress, we use the \texttt{sysbench} \texttt{fileio} and \texttt{memory} tests respectively. The details of the workloads chosen are described in detail below.
+
+Minebench - We select multiple data mining applications from Minebench to test performance isolation. We select both serial and parallel tests (which are multithreaded) to get a good coverage of both single-threaded and multi-threaded applications. The parallel benchmarks chosen were:
+1. ScalParC - A method to solve the decision tree classification problem. It builds a decision tree model by recursively splitting the training dataset based on an optimal criterion until all records belonging to one partition bear the same class label.
+2. K-means - A clustering application which assigns each object in the dataset to its nearest cluster among K clusters based on a similarity function.
+3. Fuzzy K-means - A relaxed version of K-means, where a data object can have a degree of membership in each cluster.
+4. HOP - A density-based clustering method which associates each particle with its densest neighbor, and is generally used in molecular biology, geology and astronomy. 
+5. Apriori - A popular Association Rule Mining (ARM) algorithm which tries to find the all subsets of items or attributes that frequently occur in database records, and can discover interesting association relationships among large number of business transaction records.
+
+The serial benchmarks chosen are described below:
+1. ECLAT - Another ARM algorithm which uses a vertical database format and employs efficient lattice traversal techniques to identify all the maximal frequent itemsets. 
+2. BIRCH - A clustering method which employs a hierarchical tree to represent the closeness of objects. It scans the database to build a clustering-feature (CF) tree and then applies K-means as a clustering algorithm on the leaf nodes.
+
+Minebench Variations - We also run the above-mentioned workloads under the following range of different settings:
+1. Dataset size: Small, medium and large
+2. Number of cores: 1, 4 and 8 cores
+3. Number of threads (parallel tests only): 1 and 8 threads
+
+\textbf{Sysbench disk and memory} - The Minebench tests do not stress the memory and disk subsystems enough for us to extract meaningful conclusions for memory and disk isolation. Therefore, we use the \texttt{sysbench} fileio test to measure the disk isolation capacities. We measure the disk throughput achieved for a random read-write test on a file size of 3 GB and read-to-write ratio of 1.5.
+
+We use the \texttt{memory} test to measure the average memory throughput achieved when the application tries to perform memory transfers in blocks of 50 GB till it has performed 20 such operations. 
+
+\section{Related Work}
+
+\textbf{Programmable NICs} - There have been several efforts to make the NIC hardware more programmable (e.g., FPGA \cite{netFPGA, riceNIC} and network processors \cite{Netronome-NFP, Cavium}. However, they have limited hardware resources and the degree of programmability is limited. SoftNIC  SoftNIC \cite{softnic} tries to customize NIC functionality by using dedicated CPU cores running software extensions. There are also commercial offerings of ``smart'' NICs, which include a general-purpose processor on the NIC card. Our study focuses on SoftNIC and potentially smart NICs because of the ease of programmability.  
+
+\textbf{High-performance software designs} - High performance key-value store implementations, such as HERD \cite{herd}, Pilaf \cite{Pilaf}, and MICA \cite{mica} require client modifications to be able to deliver high performance. For example, Pilafs require clients to issue RDMA reads, HERD requires writes to bypass network stacks, and MICA requires clients to compute hashes. In our study, we focus on achieving similar performance by making modifications only in the server`s NIC.
+
+\bibliographystyle{plain}
+\bibliography{reference}
+
+\end{document}
